@@ -1,0 +1,51 @@
+<html>
+<head>
+<title> View Employee </title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container" style="margin-top: 200px">
+  <h1> View Players </h1>
+  {% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+      <div class="alert alert-primary" role="alert">
+        {{ message }}
+      </div>
+    {% endfor %}
+   </ul>
+ {% endif %}
+ <a href="{% url 'create' %}" class="btn btn-success text white">New Player</a>
+  <br>
+  <br>
+
+<table border="1" class="table">
+<thead>
+  <tr>
+     <th>Mobile</th>
+    <th>lot_type</th>
+    <th>lot_num</th>
+    <th>Delete</th>
+<!--    <th>Update</th>-->
+    <th>View</th>
+  </tr>
+</thead>
+<tbody>
+{% for p_list in player %}
+  <tr>
+    <td>{{ p_list.mobile }}</td>
+    <td>{{ p_list.lot_type }}</td>
+    <td>{{ p_list.lot_num }}</td>
+    <td><a href="{% url 'deletePlayer' p_list.id %}">Delete</a></td>
+
+    <td><a href="{% url 'viewPlayer' p_list.id %}">View</a></td>
+  </tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
